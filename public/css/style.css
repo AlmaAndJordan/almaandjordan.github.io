@@ -1,0 +1,22 @@
+body{
+    margin:10px;
+    display: block;
+    background-color: #fff;
+}
+
+img.character-img{
+    width: 100%;
+    height: auto;
+}
+
+
+#g-maps{
+    width: 100%;
+    height: auto;
+}
+
+._btn{
+    
+    background-color: #48cae4 !important;
+    width: 100% !important;
+}

@@ -1,0 +1,13 @@
+.compact{
+    padding: 0px 0px !important;
+    margin: 0px !important;
+    border: 0px !important;
+}
+
+.name-banner{
+    width: 100%;
+    height: auto;
+    color: #fff;
+    text-align: center;
+  
+}
