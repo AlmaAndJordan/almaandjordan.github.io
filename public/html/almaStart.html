@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alma and Jordan's Melb to TSV</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="../css/game.css">
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+        img{
+            width: 100%;
+            height: auto;
+        }
+    </style>
+
+</head>
+<body>
+    
+   <div class = "row" style = "height: 3vh;">
+        <h5 class = "center" style = "padding-top: 1vh;">The Rules</h5>
+    </div>
+    <div class = "row">
+        <div class = "col s12">
+            <ol>
+                <li>There will be x questions about our trip this past summer and some other trivia questions.</li>
+                <li>Every question you answer correctly will push the bar at the bottom of the screen closer to the end.</li>
+                <li>Once you get past halfway, you starting winning prizes.</li>
+                <li>You will receive a coupon at the end, dependent on your final score, which can be redeemable whenever you choose.</li>
+            </ol>
+            <p class = "center">Best of luck and HAVE FUN!</p>
+            <img src = "../resources/library.jpg" style = "padding-top: 5vh;" >
+
+            <a href="./game.html" class = "col s12" style = "padding-top:10vh !important;"><button type="button" class="btn _btn">Begin</button></a>
+
+            <div class = "row">
+                <div class = "col s12">
+                    <div class = "col s12" id = "progress-bar">
+                        <div id = "player-progress"></div>
+                    </div>
+                </div>
+            </div>
+                
+        </div>
+    </div>
+
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="../js/soundmanager2.js"></script>
+<script>
+    
+    soundManager.setup({
+        url: '../js/swf',
+        onready: function() {
+            var mySound = soundManager.createSound({
+            id: 'aSound',
+            url: '../resources/chase.mp3'
+            });
+            mySound.play();
+        },
+        ontimeout: function() {
+            // Hrmm, SM2 could not start. Missing SWF? Flash blocked? Show an error, etc.?
+        }
+});
+
+   
+</script>
+</body>
+</html>

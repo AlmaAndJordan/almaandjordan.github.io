@@ -1,22 +1,32 @@
+*{
+    color: #f1faee;
+
+}
 body{
-    margin:10px;
-    display: block;
-    background-color: #fff;
+    background-color: #457b9d !important;
 }
 
-img.character-img{
-    width: 100%;
-    height: auto;
-}
-
-
-#g-maps{
-    width: 100%;
-    height: auto;
+.compact{
+    padding: 0px 0px !important;
+    margin: 0px !important;
+    border: 0px !important;
 }
 
 ._btn{
     
     background-color: #48cae4 !important;
     width: 100% !important;
+    padding: 0px 0px !important;
+
+}
+
+a{
+    padding: 0px 0px !important;
+}
+
+.modal-item{
+    background-color: #457b9d !important;
+    color: #f1faee;
+
+
 }
