@@ -8,6 +8,7 @@ var timerWidth = 0;
 
 
 document.addEventListener("DOMContentLoaded", () => {
+    
     var elems = document.querySelectorAll('.modal');
     var instances = M.Modal.init(elems);
     questions.push({
