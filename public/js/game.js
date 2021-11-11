@@ -8,7 +8,7 @@ var timerWidth = 0;
 
 
 document.addEventListener("DOMContentLoaded", () => {
-    
+
     var elems = document.querySelectorAll('.modal');
     var instances = M.Modal.init(elems);
     questions.push({
@@ -192,7 +192,7 @@ const handlePrizes = () => {
     let instances = M.Modal.init(elems);
 
     switch(playerScore){
-       
+        
         case 30: 
             document.getElementById('modal-content-container').innerHTML = `
             <p class = "center">Woohooo</p>
@@ -213,6 +213,10 @@ const handlePrizes = () => {
                 </ul>
                 <p><em>There will be complimentary snacks and beverages (of course)</em></p>`;
             instances[0].open();
+        break;
+
+        case 70:
+            window.open ('../resources/almas_ticket.pdf')
         break;
 
     }
