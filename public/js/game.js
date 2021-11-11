@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     questions.push({
         question: "What were we doing when we had our first kiss?",
-        answers: ["Dancing", "Sitting on a step in an alleyway", "Walking to your apartment"],
+        answers: ["Dancing", "Sitting on a step in an alleyway", "Walking to your apartment", "On your balcony"],
         correctIndex: 1
     });
 
@@ -262,8 +262,10 @@ const handlePrizes = () => {
                 </ul>
                 <p><em>There will be complimentary snacks and beverages (of course)</em></p>`;
             instances[0].open();
-            document.getElementById('prize2').innerHTML = `<img class = "icon"  src = "../resources/present-won.svg">`
-                hasWon[1] = true;
+            document.getElementById('prize2').innerHTML = 
+            `<img class = "icon"  src = "../resources/present-won.svg">
+            <p class = "center">Home spa day!</p>`
+            hasWon[1] = true;
             }
             
 
@@ -272,7 +274,9 @@ const handlePrizes = () => {
         case 70:
             if (!hasWon[2]){
                 window.open ('../resources/almas_ticket.pdf')
-                document.getElementById('prize3').innerHTML = `<img class = "icon"  src = "../resources/present-won.svg">`
+                document.getElementById('prize3').innerHTML = 
+                `<img class = "icon"  src = "../resources/present-won.svg">
+                <p class = "center">Cape Tribulation Adventure!`
                 hasWon[2] = true;
             }
            
