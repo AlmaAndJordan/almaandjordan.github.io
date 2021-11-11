@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
     var elems = document.querySelectorAll('.modal');
     var instances = M.Modal.init(elems);
     questions.push({
-        question: "When living in marine waters, at what size does the lates calcarifer change its sex?",
+        question: "When living in marine waters, at what length (cm) does the lates calcarifer change its sex?",
         answers: ["60", "80", "90", "100"],
         correctIndex: 1
     });
@@ -56,6 +56,26 @@ document.addEventListener("DOMContentLoaded", () => {
         correctIndex: 1
     });
 
+    questions.push({
+        question: "Butt to nose, Stevie is how many cm long?",
+        answers: ["68.50", "59.50", "71.00", "65.20"],
+        correctIndex: 0
+    });
+
+    questions.push({
+        question: "As of today, how many days old are you?",
+        answers: ["8401", "8760", "8740", "8766"],
+        correctIndex: 3
+    });
+
+    questions.push({
+        question: "What % of their total consumable meat does a typical tropical rock lobster have in its tail?",
+        answers: ["28%", "25%", "31%", "33%"],
+        correctIndex: 3
+    });
+
+
+
   
 
     document.getElementById('start-game').onclick = () => {
@@ -68,14 +88,35 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class = "col s12">
                 <div class = "col s4 compact">Questions left: </div>
                 <div class = "col s1 compact" id = "questions-left"></div>
-        </div>`;
+        </div>
+        <div class = "row compact">
+            <div class = "col s4" id = "prize1">
+                    <img class = "icon" src = "../resources/present.svg">
+                    <p class = "center">3 points</p>
+
+                </div>
+                <div class = "col s4" id = "prize2">
+                    <img class = "icon" src = "../resources/present.svg">
+                    <p class = "center">5 points</p>
+
+                </div>
+                <div class = "col s4" id = "prize3">
+                    <img class = "icon" src = "../resources/present.svg">
+                    <p class = "center">7 points</p>
+            </div>
+         </div>
+            
+        
+            `;
         document.getElementById('timer').innerHTML = `
             <div id = "timer-bar">
                 <div id = "live-timer"></div>
             </div>
         `;
         document.getElementById('player-score').innerText = playerScore/10;
+        document.getElementById('questions-left').innerHTML = `${questions.length-questionCounter}`;
 
+           
         changeQuestion();
 
         
@@ -95,7 +136,6 @@ var questionContainer = document.getElementById('question-container');
 
 
 const changeQuestion = () => {
-    document.getElementById('questions-left').innerHTML = `${questions.length-questionCounter}`;
 
 
     document.getElementById('answer-btn-container').innerHTML = `
@@ -105,6 +145,7 @@ const changeQuestion = () => {
         document.getElementById('answer-question').onclick = () => {
             finishRound(interval);
             document.getElementById('player-score').innerText = playerScore/10;
+            
         };
    
 
@@ -162,8 +203,6 @@ const finishRound = (interval) => {
     let answer = $('input[name=answers]:checked').next().text();
     let answeredIndex = questions[questionCounter].answers.indexOf(answer.toString());
 
-    console.log(questionCounter)
-    // console.log(questions[questionCounter].correctIndex)
     if (answeredIndex == questions[questionCounter].correctIndex){
 
         playerScore = playerScore + 10;
@@ -183,6 +222,7 @@ const finishRound = (interval) => {
 
 
     questionCounter++;
+    document.getElementById('questions-left').innerHTML = `${questions.length-questionCounter}`;
 
     document.getElementById('next-question').onclick = changeQuestion;
 }
@@ -198,6 +238,9 @@ const handlePrizes = () => {
             <p class = "center">Woohooo</p>
             <p class = "center" >You win your first prize!!</p>`;
             instances[0].open(); 
+            document.getElementById('prize1').innerHTML = 
+            `<img class = "icon"  src = "../resources/present-won.svg">
+            <p class = "center">Volleyball!</p>`
         break;
 
         case 50:
@@ -213,10 +256,14 @@ const handlePrizes = () => {
                 </ul>
                 <p><em>There will be complimentary snacks and beverages (of course)</em></p>`;
             instances[0].open();
+            document.getElementById('prize2').innerHTML = `<img class = "icon"  src = "../resources/present-won.svg">`
+
         break;
 
         case 70:
             window.open ('../resources/almas_ticket.pdf')
+            document.getElementById('prize3').innerHTML = `<img class = "icon"  src = "../resources/present-won.svg">`
+
         break;
 
     }
