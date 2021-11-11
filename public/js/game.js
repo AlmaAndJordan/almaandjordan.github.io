@@ -1,3 +1,4 @@
+
 var questions = [];
 var questionCounter = 0;
 var playerScore = 0;
@@ -9,18 +10,24 @@ var timerWidth = 0;
 document.addEventListener("DOMContentLoaded", () => {
     var elems = document.querySelectorAll('.modal');
     var instances = M.Modal.init(elems);
-
+    questions.push({
+        question: "When living in marine waters, at what size does the lates calcarifer change its sex?",
+        answers: ["60", "80", "90", "100"],
+        correctIndex: 1
+    });
+    questions.push({
+        question: "How many days elapsed between leaving Melbourne and arriving in Townsville?",
+        answers: ["11", "12", "13", "14"],
+        correctIndex: 1
+    });
+    
     questions.push({
         question: "What road were we on when we decided to be together?",
         answers: ["Monash Freeway", "Westgate Freeway", "Domain Tunnel", "Bolte Bridge"],
         correctIndex: 1
     });
 
-    questions.push({
-        question: "What were we doing when we had our first kiss?",
-        answers: ["Dancing", "Sitting on a step in an alleyway", "Walking to your apartment"],
-        correctIndex: 1
-    });
+   
 
     questions.push({
         question: "What was the name of the town we stayed in on our first night on the road?",
@@ -28,11 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
         correctIndex: 2
     });
 
-    questions.push({
-        question: "How many days elapsed between leaving Melbourne and arriving in Townsville?",
-        answers: ["11", "12", "13", "14"],
-        correctIndex: 1
-    });
+    
 
     questions.push({
         question: "What is the name of the town we made our NSW/QLD border crossing at?",
@@ -46,16 +49,21 @@ document.addEventListener("DOMContentLoaded", () => {
         correctIndex: 3
     });
 
+    questions.push({
+        question: "What were we doing when we had our first kiss?",
+        answers: ["Dancing", "Sitting on a step in an alleyway", "Walking to your apartment"],
+        correctIndex: 1
+    });
+
+  
+
     document.getElementById('start-game').onclick = () => {
         document.getElementById('stat-display').innerHTML = `
         <div class = "col s12" style = "padding-top: 2vh">
             <div class = "col s4 compact">Score: </div>
             <div class = "col s4 compact" id = "player-score"></div>
         </div>
-        <div class = "col s12">
-            <div class = "col s4 compact">Rewards at: </div>
-            <div class = "col s4 compact"> 3, 5 and 7</div>        
-        </div>
+        
         <div class = "col s12">
                 <div class = "col s4 compact">Questions left: </div>
                 <div class = "col s1 compact" id = "questions-left"></div>
@@ -106,8 +114,8 @@ const changeQuestion = () => {
     for (i; i < questionObject.answers.length; i++){
         questionHtml += `
         <li style = "padding-bottom: 2vh">
-            <p>
-                <label id = "answer${i}">
+            <p id = "answer${i}">
+                <label >
                     <input name="answers" type="radio"/>
                     <span>${questionObject.answers[i]}</span>
                 </label>
@@ -179,10 +187,20 @@ const finishRound = (interval) => {
 }
 
 const handlePrizes = () => {
+    let elems = document.querySelectorAll('.modal');
+    let instances = M.Modal.init(elems);
+
     switch(playerScore){
-        case 30:
+       
+        case 30: 
             document.getElementById('modal-content-container').innerHTML = `
-            
+            <p class = "center">Woohooo</p>
+            <p class = "center" >You win your first prize!!</p>`;
+            instances[0].open(); 
+        break;
+
+        case 50:
+            document.getElementById('modal-content-container').innerHTML = `    
                 <p class = "center">Woohooo!!!</p>
                 <p>You have won a pamper afternoon! You are entitled to:</p>
                 <ul class = "prize-list">
@@ -192,18 +210,9 @@ const handlePrizes = () => {
                     <br>
                     <li>our expert hairdresser will wash, dry and comb your hair</li>
                 </ul>
-                <p><em>There will be complimentary snacks and beverages (of course)</em></p>
-
-            `;
-
-            
-            let elems = document.querySelectorAll('.modal');
-            let instances = M.Modal.init(elems);
+                <p><em>There will be complimentary snacks and beverages (of course)</em></p>`;
             instances[0].open();
         break;
 
-        case 20:
-
-        break;
     }
 }
