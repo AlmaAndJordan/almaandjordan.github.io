@@ -4,6 +4,7 @@ var questionCounter = 0;
 var playerScore = 0;
 let interval;
 var timerWidth = 0;
+var hasWon = [false, false, false]
 
 
 
@@ -234,17 +235,22 @@ const handlePrizes = () => {
     switch(playerScore){
         
         case 30: 
-            document.getElementById('modal-content-container').innerHTML = `
-            <p class = "center">Woohooo</p>
-            <p class = "center" >You win your first prize!!</p>`;
-            instances[0].open(); 
-            document.getElementById('prize1').innerHTML = 
-            `<img class = "icon"  src = "../resources/present-won.svg">
-            <p class = "center">Volleyball!</p>`
+            if (!hasWon[0]){
+                document.getElementById('modal-content-container').innerHTML = `
+                <p class = "center">Woohooo</p>
+                <p class = "center" >You win your first prize!!</p>`;
+                instances[0].open(); 
+                document.getElementById('prize1').innerHTML = 
+                `<img class = "icon"  src = "../resources/present-won.svg">
+                <p class = "center">Volleyball!</p>`
+                hasWon[0] = true;
+            }
+           
         break;
 
         case 50:
-            document.getElementById('modal-content-container').innerHTML = `    
+            if (!hasWon[1]){
+                document.getElementById('modal-content-container').innerHTML = `    
                 <p class = "center">Woohooo!!!</p>
                 <p>You have won a pamper afternoon! You are entitled to:</p>
                 <ul class = "prize-list">
@@ -257,12 +263,19 @@ const handlePrizes = () => {
                 <p><em>There will be complimentary snacks and beverages (of course)</em></p>`;
             instances[0].open();
             document.getElementById('prize2').innerHTML = `<img class = "icon"  src = "../resources/present-won.svg">`
+                hasWon[1] = true;
+            }
+            
 
         break;
 
         case 70:
-            window.open ('../resources/almas_ticket.pdf')
-            document.getElementById('prize3').innerHTML = `<img class = "icon"  src = "../resources/present-won.svg">`
+            if (!hasWon[2]){
+                window.open ('../resources/almas_ticket.pdf')
+                document.getElementById('prize3').innerHTML = `<img class = "icon"  src = "../resources/present-won.svg">`
+                hasWon[2] = true;
+            }
+           
 
         break;
 
